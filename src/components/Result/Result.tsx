@@ -72,7 +72,7 @@ const Result: React.FC<IResultProps> = ({ allQuestions }) => {
                     <div className='row-label'>InCorrect Answer: </div><div className='row-value'>{allQuestions.length - correctAnswer}</div>
                 </div>
             </div>
-            <div className='percent'>{(correctAnswer / allQuestions.length) * 100}% of Questions are Correct</div>
+            <div className='percent'>{((correctAnswer / allQuestions.length) * 100).toFixed(2)}% of Questions are Correct</div>
         </ResultContainer>
     )
 }
