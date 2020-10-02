@@ -88,7 +88,6 @@ const QuizHistory: React.FC<IQuizHistoryProps> = ({ setShowHistory }) => {
                         <th>Correct Answers</th>
                         <th>Incorrect Answers</th>
                         <th>Percentage</th>
-                        <th>Time Taken</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -101,7 +100,6 @@ const QuizHistory: React.FC<IQuizHistoryProps> = ({ setShowHistory }) => {
                                 <td>{correct}</td>
                                 <td>{inCorrect}</td>
                                 <td>{percent}%</td>
-                                <td>{time}</td>
                             </tr>
                         )
                     }) : (<tr><td colSpan={5}>No Quiz History Found..</td></tr>)}

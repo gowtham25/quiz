@@ -20,9 +20,8 @@ const ResultContainer = styled.div`
 
 interface IResultProps {
     allQuestions: QuestionProps[];
-    time: string;
 }
-const Result: React.FC<IResultProps> = ({ allQuestions, time }) => {
+const Result: React.FC<IResultProps> = ({ allQuestions }) => {
     const [correctAnswer, setCorrectAnswer] = useState<number>(0);
     useEffect(() => {
         const answer = allQuestions.filter((aVal: any) => {
@@ -39,7 +38,6 @@ const Result: React.FC<IResultProps> = ({ allQuestions, time }) => {
                 totalQuestions: allQuestions.length,
                 correct: answer.length,
                 inCorrect: allQuestions.length - answer.length,
-                time,
                 percent
             }];
             localStorage.setItem('quizHistory', JSON.stringify(parseJson));
@@ -49,12 +47,11 @@ const Result: React.FC<IResultProps> = ({ allQuestions, time }) => {
                 totalQuestions: allQuestions.length,
                 correct: answer.length,
                 inCorrect: allQuestions.length - answer.length,
-                time,
                 percent
             }]
             localStorage.setItem('quizHistory', JSON.stringify(stringJson));
         }
-    }, [allQuestions, time]);
+    }, [allQuestions]);
 
     const getTodayDate = () => {
         var today = new Date();

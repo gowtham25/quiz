@@ -177,14 +177,6 @@ const QuestionList: React.FC<IQuizQuestionsProps> = ({ handleRestart, quizQuesti
     const [currentQuestion, setCurrentQuestion] = useState<QuestionProps>();
     const [allQuestions, setAllQuestions] = useState<any>([]);
     const [isSubmit, setIsSubmit] = useState<boolean>(false);
-    const [time, setTime] = useState(0);
-
-    useEffect(() => {
-        const timerId = setInterval(() => {
-            setTime((t) => t + 1);
-        }, 1000);
-        return () => clearInterval(timerId);
-    }, []);
 
     useEffect(() => {
         if (quizQuestions && quizQuestions.length) {
@@ -224,9 +216,9 @@ const QuestionList: React.FC<IQuizQuestionsProps> = ({ handleRestart, quizQuesti
     return (
         <QuestionListContainer>
             <div className='restart-container'>
-                <button className='restart' onClick={() => { handleClickHome() }}>Home</button>{!isSubmit && <div>{`Time: ${new Date(time * 1000).toISOString().substr(11, 8)}`}</div>}<button className='restart' onClick={() => { handleRestart() }}>Restart Quiz</button>
+                <button className='restart' onClick={() => { handleClickHome() }}>Home</button><button className='restart' onClick={() => { handleRestart() }}>Restart Quiz</button>
             </div>
-            {isSubmit ? <Result allQuestions={allQuestions} time={new Date(time * 1000).toISOString().substr(11, 8)} /> :
+            {isSubmit ? <Result allQuestions={allQuestions} /> :
                 <div className='question-container-top'>
                     <div className='questionCount'>{`Question ${currentQuestionNo + 1} of ${quizQuestions.length}`}</div>
                     <div className='question-container'>
