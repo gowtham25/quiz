@@ -30,7 +30,7 @@ const Result: React.FC<IResultProps> = ({ allQuestions }) => {
         });
         setCorrectAnswer(answer.length);
         let history = localStorage.getItem('quizHistory');
-        const percent = (answer.length / allQuestions.length) * 100;
+        const percent = ((answer.length / allQuestions.length) * 100).toFixed(2);
         if (history) {
             let parseJson = JSON.parse(history);
             parseJson = [...parseJson, {
